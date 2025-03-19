@@ -1,0 +1,21 @@
+name: Pull Request Approval
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Approval Email
+        uses: actions/send-email@v1
+        with:
+          to: ${{ secrets.manoj-kumar.shunmugam@takeda.com }}
+          subject: "Pull Request Approval Required"
+          body: "A new pull request has been raised. Please review and approve: ${{ github.event.pull_request.html_url }}"
+      - name: Wait for Approval
+        uses: actions-approve@v1
+        with:
+          approval-token: ${{ secrets.YES }}
+          approval-message: "Please approve the pull request"
