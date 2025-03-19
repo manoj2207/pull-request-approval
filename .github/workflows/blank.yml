@@ -11,11 +11,11 @@ jobs:
       - name: Send Approval Email
         uses: actions/send-email@v1
         with:
-          to: ${{ secrets.APPROVER_EMAIL }}
+          to: ${{ secrets.manoj-kumar.shunmugam@takeda.com }}
           subject: "Pull Request Approval Required"
           body: "A new pull request has been raised. Please review and approve: ${{ github.event.pull_request.html_url }}"
       - name: Wait for Approval
         uses: actions-approve@v1
         with:
-          approval-token: ${{ secrets.APPROVAL_TOKEN }}
+          approval-token: ${{ secrets.YES }}
           approval-message: "Please approve the pull request"
